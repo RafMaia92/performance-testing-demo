@@ -21,11 +21,16 @@
 `docker-compose run -v \
     $PWD/samples:/scripts \
     k6 run /scripts/smokeTesting.js`
+##### Test Results
+![Smoke Testing](/assets/smoke.png "Smoke Testing")
 
 #### Stress Testing 
 `docker-compose run -v \
     $PWD/samples:/scripts \
     k6 run /scripts/stressTesting.js`
+##### Test Results
+![Stress Testing](/assets/stress.png "Stress Testing")
+
 
 #### Spike Testing 
 `docker-compose run -v \
