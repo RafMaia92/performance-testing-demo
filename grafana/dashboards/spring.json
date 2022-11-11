@@ -1,0 +1,1371 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "springboot metrics",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "gnetId": 16107,
+    "graphTooltip": 0,
+    "id": 6,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "collapsed": false,
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 57,
+        "panels": [],
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "Quick Facts",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "dateTimeAsIso"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 1
+        },
+        "hideTimeOverride": true,
+        "id": 121,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "groupBy": [],
+            "measurement": "process_start_time",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT \"value\" FROM \"process_start_time\" WHERE  $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "department",
+                "operator": "=~",
+                "value": "/^$department$/"
+              },
+              {
+                "condition": "AND",
+                "key": "group",
+                "operator": "=~",
+                "value": "/^$group$/"
+              },
+              {
+                "condition": "AND",
+                "key": "ip",
+                "operator": "=~",
+                "value": "/^$ip$/"
+              },
+              {
+                "condition": "AND",
+                "key": "project",
+                "operator": "=~",
+                "value": "/^$project$/"
+              },
+              {
+                "condition": "AND",
+                "key": "host",
+                "operator": "=~",
+                "value": "/^$host$/"
+              }
+            ]
+          }
+        ],
+        "timeFrom": "10m",
+        "title": "Start Time",
+        "type": "stat"
+      },
+      {
+        "circleBackground": false,
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "#629e51",
+          "#e0f9d7",
+          "#e24d42"
+        ],
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "decimals": 2,
+        "defaultColor": "rgb(117, 117, 117)",
+        "description": "The percentage of total system CPU",
+        "format": "percentunit",
+        "gauge": {
+          "maxValue": 1,
+          "minValue": 0,
+          "show": true,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 4,
+          "y": 1
+        },
+        "id": 67,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "$$hashKey": "object:290",
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "$$hashKey": "object:291",
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "math": "value",
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sortOrder": "asc",
+        "sortOrderOptions": [
+          {
+            "text": "Ascending",
+            "value": "asc"
+          },
+          {
+            "text": "Descending",
+            "value": "desc"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgb(213, 243, 203)",
+          "full": false,
+          "lineColor": "#f9934e",
+          "show": true
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "alias": "value",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "groupBy": [],
+            "measurement": "process_cpu_usage",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT \"value\" FROM \"process_cpu_usage\"  WHERE $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "department",
+                "operator": "=~",
+                "value": "/^$department$/"
+              },
+              {
+                "condition": "AND",
+                "key": "group",
+                "operator": "=~",
+                "value": "/^$group$/"
+              },
+              {
+                "condition": "AND",
+                "key": "project",
+                "operator": "=~",
+                "value": "/^$project$/"
+              },
+              {
+                "condition": "AND",
+                "key": "host",
+                "operator": "=~",
+                "value": "/^$host$/"
+              },
+              {
+                "condition": "AND",
+                "key": "ip",
+                "operator": "=~",
+                "value": "/^$ip$/"
+              }
+            ]
+          }
+        ],
+        "thresholds": [],
+        "title": "Process CPU usage",
+        "tooltip": {
+          "show": true
+        },
+        "type": "blackmirror1-singlestat-math-panel",
+        "valueFontSize": "50%",
+        "valueMappingColorBackground": "#767171",
+        "valueMaps": [
+          {
+            "$$hashKey": "object:293",
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "circleBackground": false,
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "#629e51",
+          "#e0f9d7",
+          "#e24d42"
+        ],
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "decimals": 2,
+        "defaultColor": "rgb(117, 117, 117)",
+        "description": "The proportion of the total number of CPUs in the system",
+        "format": "percentunit",
+        "gauge": {
+          "maxValue": 1,
+          "minValue": 0,
+          "show": true,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 6,
+          "x": 10,
+          "y": 1
+        },
+        "id": 71,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "$$hashKey": "object:1345",
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "$$hashKey": "object:1346",
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "math": "value",
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sortOrder": "asc",
+        "sortOrderOptions": [
+          {
+            "text": "Ascending",
+            "value": "asc"
+          },
+          {
+            "text": "Descending",
+            "value": "desc"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgb(213, 243, 203)",
+          "full": false,
+          "lineColor": "#f9934e",
+          "show": true
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "alias": "value",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "groupBy": [],
+            "measurement": "system_cpu_usage",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT \"value\" FROM \"system_cpu_usage\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "department",
+                "operator": "=~",
+                "value": "/^$department$/"
+              },
+              {
+                "condition": "AND",
+                "key": "group",
+                "operator": "=~",
+                "value": "/^$group$/"
+              },
+              {
+                "condition": "AND",
+                "key": "project",
+                "operator": "=~",
+                "value": "/^$project$/"
+              },
+              {
+                "condition": "AND",
+                "key": "host",
+                "operator": "=~",
+                "value": "/^$host$/"
+              },
+              {
+                "condition": "AND",
+                "key": "ip",
+                "operator": "=~",
+                "value": "/^$ip$/"
+              }
+            ]
+          }
+        ],
+        "thresholds": [],
+        "title": "System CPU usage",
+        "tooltip": {
+          "show": true
+        },
+        "type": "blackmirror1-singlestat-math-panel",
+        "valueFontSize": "50%",
+        "valueMappingColorBackground": "#767171",
+        "valueMaps": [
+          {
+            "$$hashKey": "object:1348",
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "links": [],
+            "mappings": []
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Client Error"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "dark-red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Success"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 8,
+          "x": 16,
+          "y": 1
+        },
+        "id": 4,
+        "links": [],
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "alias": "Client Error",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "groupBy": [
+              {
+                "params": [
+                  "1m"
+                ],
+                "type": "time"
+              }
+            ],
+            "measurement": "http_server_requests",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "select sum(count) from http_server_requests where outcome = 'CLIENT_ERROR' and $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "count"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "sum"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "department",
+                "operator": "=~",
+                "value": "/^$department$/"
+              },
+              {
+                "condition": "AND",
+                "key": "group",
+                "operator": "=~",
+                "value": "/^$group$/"
+              },
+              {
+                "condition": "AND",
+                "key": "project",
+                "operator": "=~",
+                "value": "/^$project$/"
+              },
+              {
+                "condition": "AND",
+                "key": "host",
+                "operator": "=~",
+                "value": "/^$host$/"
+              },
+              {
+                "condition": "AND",
+                "key": "ip",
+                "operator": "=~",
+                "value": "/^$ip$/"
+              },
+              {
+                "condition": "AND",
+                "key": "status",
+                "operator": "=~",
+                "value": "/^$status$/"
+              },
+              {
+                "condition": "AND",
+                "key": "uri",
+                "operator": "=~",
+                "value": "/^$uri$/"
+              }
+            ]
+          },
+          {
+            "alias": "Success",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "groupBy": [
+              {
+                "params": [
+                  "$__interval"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "hide": false,
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "select sum(count) from http_server_requests where outcome = 'SUCCESS'  and $timeFilter",
+            "rawQuery": true,
+            "refId": "B",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "mean"
+                }
+              ]
+            ],
+            "tags": []
+          }
+        ],
+        "title": "Requests",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "N/A"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "ms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 3
+        },
+        "hideTimeOverride": true,
+        "id": 59,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "groupBy": [],
+            "measurement": "process_uptime",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT \"value\" FROM \"process_uptime\" WHERE $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "department",
+                "operator": "=~",
+                "value": "/^$department$/"
+              },
+              {
+                "condition": "AND",
+                "key": "group",
+                "operator": "=~",
+                "value": "/^$group$/"
+              },
+              {
+                "condition": "AND",
+                "key": "ip",
+                "operator": "=~",
+                "value": "/^$ip$/"
+              },
+              {
+                "condition": "AND",
+                "key": "project",
+                "operator": "=~",
+                "value": "/^$project$/"
+              },
+              {
+                "condition": "AND",
+                "key": "host",
+                "operator": "=~",
+                "value": "/^$host$/"
+              }
+            ]
+          }
+        ],
+        "timeFrom": "10m",
+        "title": "runtime",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "text": "0"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 5
+        },
+        "hideTimeOverride": true,
+        "id": 117,
+        "links": [],
+        "maxDataPoints": 100,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.3",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "groupBy": [],
+            "measurement": "http_server_requests",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT sum(\"count\")  / 60 FROM \"http_server_requests\" WHERE $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "count"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "sum"
+                },
+                {
+                  "params": [
+                    " / 300"
+                  ],
+                  "type": "math"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "department",
+                "operator": "=~",
+                "value": "/^$department$/"
+              },
+              {
+                "condition": "AND",
+                "key": "group",
+                "operator": "=~",
+                "value": "/^$group$/"
+              },
+              {
+                "condition": "AND",
+                "key": "project",
+                "operator": "=~",
+                "value": "/^$project$/"
+              },
+              {
+                "condition": "AND",
+                "key": "host",
+                "operator": "=~",
+                "value": "/^$host$/"
+              }
+            ]
+          }
+        ],
+        "timeFrom": "5m",
+        "title": "QPS",
+        "type": "stat"
+      },
+      {
+        "LowerLimit": {
+          "Color": "rgb(2, 17, 249)",
+          "Decimals": "1",
+          "DisplayOption": "disabled",
+          "FontSize": "50%",
+          "Value": "20"
+        },
+        "LowerWarning": {
+          "Color": "rgb(9, 115, 102)",
+          "DisplayOption": "disabled",
+          "Value": "25"
+        },
+        "Metric": {
+          "Color": "rgb(2, 247, 2)",
+          "Decimals": "4",
+          "FontSize": "100%",
+          "Format": "none",
+          "Name": "current"
+        },
+        "MetricValueRange": "",
+        "Postfix": {
+          "FontSize": "hide",
+          "Text": ""
+        },
+        "Prefix": {
+          "FontSize": "100%",
+          "Text": ""
+        },
+        "UpperLimit": {
+          "Color": "rgb(247, 90, 7)",
+          "Decimals": "2",
+          "DisplayOption": "disabled",
+          "FontSize": "50%",
+          "Value": "65535"
+        },
+        "UpperWarning": {
+          "Color": "#f2c96d",
+          "DisplayOption": "flash",
+          "Value": "39321"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 0,
+          "y": 7
+        },
+        "id": 61,
+        "links": [],
+        "sparkline": {
+          "fillColor": "rgba(19, 193, 91, 0.32)",
+          "full": true,
+          "lineColor": "rgb(145, 200, 16)",
+          "show": true
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "groupBy": [],
+            "measurement": "process_files_open",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT \"value\" FROM \"process_files_open\" WHERE  $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "department",
+                "operator": "=~",
+                "value": "/^$department$/"
+              },
+              {
+                "condition": "AND",
+                "key": "group",
+                "operator": "=~",
+                "value": "/^$group$/"
+              },
+              {
+                "condition": "AND",
+                "key": "project",
+                "operator": "=~",
+                "value": "/^$project$/"
+              },
+              {
+                "condition": "AND",
+                "key": "host",
+                "operator": "=~",
+                "value": "/^$host$/"
+              },
+              {
+                "condition": "AND",
+                "key": "ip",
+                "operator": "=~",
+                "value": "/^$ip$/"
+              }
+            ]
+          }
+        ],
+        "title": "Number of open files",
+        "type": "michaeldmoore-annunciator-panel"
+      },
+      {
+        "LowerLimit": {
+          "Color": "rgb(2, 17, 249)",
+          "Decimals": "1",
+          "DisplayOption": "disabled",
+          "FontSize": "50%",
+          "Value": "20"
+        },
+        "LowerWarning": {
+          "Color": "rgb(9, 115, 102)",
+          "DisplayOption": "disabled",
+          "Value": "25"
+        },
+        "Metric": {
+          "Color": "rgb(2, 247, 2)",
+          "Decimals": 2,
+          "FontSize": "70%",
+          "Format": "none",
+          "Name": "current"
+        },
+        "MetricValueRange": "",
+        "Postfix": {
+          "FontSize": "hide",
+          "Text": ""
+        },
+        "Prefix": {
+          "FontSize": "70%",
+          "Text": ""
+        },
+        "UpperLimit": {
+          "Color": "rgb(247, 90, 7)",
+          "Decimals": "2",
+          "DisplayOption": "disabled",
+          "FontSize": "50%",
+          "Value": "80"
+        },
+        "UpperWarning": {
+          "Color": "#f2c96d",
+          "DisplayOption": "flash",
+          "Value": "60"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 6,
+          "x": 4,
+          "y": 8
+        },
+        "id": 69,
+        "links": [],
+        "sparkline": {
+          "fillColor": "rgba(19, 193, 91, 0.32)",
+          "full": true,
+          "lineColor": "rgb(145, 200, 16)",
+          "show": true
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "groupBy": [],
+            "measurement": "system_load_average_1m",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT \"value\" FROM \"system_load_average_1m\" ",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "department",
+                "operator": "=~",
+                "value": "/^$department$/"
+              },
+              {
+                "condition": "AND",
+                "key": "group",
+                "operator": "=~",
+                "value": "/^$group$/"
+              },
+              {
+                "condition": "AND",
+                "key": "project",
+                "operator": "=~",
+                "value": "/^$project$/"
+              },
+              {
+                "condition": "AND",
+                "key": "host",
+                "operator": "=~",
+                "value": "/^$host$/"
+              },
+              {
+                "condition": "AND",
+                "key": "ip",
+                "operator": "=~",
+                "value": "/^$ip$/"
+              }
+            ]
+          }
+        ],
+        "title": "System load in the last minute",
+        "type": "michaeldmoore-annunciator-panel"
+      },
+      {
+        "LowerLimit": {
+          "Color": "rgb(2, 17, 249)",
+          "Decimals": "1",
+          "DisplayOption": "disabled",
+          "FontSize": "50%",
+          "Value": "20"
+        },
+        "LowerWarning": {
+          "Color": "rgb(9, 115, 102)",
+          "DisplayOption": "disabled",
+          "Value": "25"
+        },
+        "Metric": {
+          "Color": "rgb(2, 247, 2)",
+          "Decimals": "4",
+          "FontSize": "100%",
+          "Format": "none",
+          "Name": "current"
+        },
+        "MetricValueRange": "",
+        "Postfix": {
+          "FontSize": "hide",
+          "Text": ""
+        },
+        "Prefix": {
+          "FontSize": "100%",
+          "Text": ""
+        },
+        "UpperLimit": {
+          "Color": "rgb(247, 90, 7)",
+          "Decimals": "2",
+          "DisplayOption": "disabled",
+          "FontSize": "50%",
+          "Value": "65535"
+        },
+        "UpperWarning": {
+          "Color": "#f2c96d",
+          "DisplayOption": "flash",
+          "Value": "39321"
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 10,
+          "y": 8
+        },
+        "id": 110,
+        "links": [],
+        "sparkline": {
+          "fillColor": "rgba(19, 193, 91, 0.32)",
+          "full": true,
+          "lineColor": "rgb(145, 200, 16)",
+          "show": true
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "groupBy": [],
+            "measurement": "jvm_threads_live",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT \"value\" FROM \"jvm_threads_live\" WHERE  $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "department",
+                "operator": "=~",
+                "value": "/^$department$/"
+              },
+              {
+                "condition": "AND",
+                "key": "group",
+                "operator": "=~",
+                "value": "/^$group$/"
+              },
+              {
+                "condition": "AND",
+                "key": "project",
+                "operator": "=~",
+                "value": "/^$project$/"
+              },
+              {
+                "condition": "AND",
+                "key": "host",
+                "operator": "=~",
+                "value": "/^$host$/"
+              },
+              {
+                "condition": "AND",
+                "key": "ip",
+                "operator": "=~",
+                "value": "/^$ip$/"
+              }
+            ]
+          }
+        ],
+        "title": "Threads",
+        "type": "michaeldmoore-annunciator-panel"
+      },
+      {
+        "collapsed": false,
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DLJBifv4z"
+        },
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 14
+        },
+        "id": 9,
+        "panels": [],
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "DLJBifv4z"
+            },
+            "refId": "A"
+          }
+        ],
+        "title": "Request",
+        "type": "row"
+      }
+    ],
+    "refresh": "5s",
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "",
+    "title": "springboot Dashboard",
+    "uid": "dRn74pLZk",
+    "version": 29,
+    "weekStart": ""
+  }

@@ -3,6 +3,7 @@ version: '3.4'
 networks:
   k6:
   grafana:
+  appDemo:
 
 services:
   influxdb:
@@ -10,6 +11,7 @@ services:
     networks:
       - k6
       - grafana
+      - appDemo
     ports:
       - "8086:8086"
     environment:
@@ -27,6 +29,15 @@ services:
       - GF_AUTH_BASIC_ENABLED=false
     volumes:
       - ./grafana:/etc/grafana/provisioning/
+
+  appDemo:
+    image: rafmaia/appdemo
+    networks:
+      - appDemo
+      - k6
+    ports:
+      - "8080:8080"
+
 
   k6:
     image: grafana/k6:latest
