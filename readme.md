@@ -32,6 +32,9 @@
     $PWD/samples:/scripts \
     k6 run /scripts/spikeTesting.js`
 
+##### Test Results 
+![Spike Testing](/assets/spike.png "Spike Testing")
+
 #### Load testing 
 `docker-compose run -v \
     $PWD/samples:/scripts \

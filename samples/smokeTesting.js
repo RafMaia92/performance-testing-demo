@@ -10,7 +10,7 @@ export const options = {
     },
 
     vus: 1,
-    duration: '5s',
+    duration: '1',
 };
 
 export default function () {
